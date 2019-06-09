@@ -6,11 +6,12 @@
         <div class="cmdName" style="#hideCmdName#">#name_display#</div>
     </div>
         <div class="content-sm ">
-            <span class="iconCmd#uid#"></span>
+            <span class="iconCmd#id#"></span>
     </div>
     <div style="font-weight: bold;font-size : 10px;">
         <span class="timeCmd#id#" ></span>
     </div>
+  	<div class="state#id#" style="font-size: 1m;font-weight: bold; height: 20px"></div>
     <script>
         jeedom.cmd.update['#id#'] = function(_options){
             // Valeur Mode 1
@@ -53,11 +54,11 @@
                 var srcImglogoER        = ('#logoER#'!='#'+'logoER#') ? "#logoER#": "oups";
                 var srcImglogoER_T      = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#": "png";
         // Paramètre "sizeh" & "sizew"
-                var srcImgHeight_M      = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):80;
-                var srcImgWidth_M       = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):80;
-                var srcImgSize_M        = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
+                var srcImgHeight        = is_numeric('#sizeh#') ? parseFloat('#sizeh#'):80;
+                var srcImgWidth         = is_numeric('#sizew#') ? parseFloat('#sizew#'):80;
+                var srcImgSize          = 'height='+srcImgHeight+'px width='+srcImgWidth+'px';
 		// Paramétrage des images
-                var srcImgURL_M         = '	plugins/widget/core/template/dashboard/cmd.info.string.Icon_Mode/';
+                var srcImgURL           = '	plugins/widget/core/template/dashboard/cmd.info.string.Icon_Mode/';
                 var srcImglogo;
                 var srcImglogo_M;
 		// Affichage durée changement dernier etat
@@ -66,40 +67,46 @@
             
             $('.cmd[data-cmd_id=#id#] .label-info').empty(); 
         // Update
-			var State = _options.display_value;	
+                var srcPictureID;
+          		var srcPictureID_T;
+                var State = _options.display_value ;
                     if (State == Mode1) {
-                        var srcImglogo      = srcImglogoM1;
-                        var srcImglogo_M    = srcImglogoM1_T;
+                        //$('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL_M +srcImglogoM1 +'.'+ srcImglogoM1_T+'" '+srcImgSize+'>');
+                      	srcPictureID	= srcImglogoM1;
+                        srcPictureID_T	= srcImglogoM1_T;
                     } else if (State == Mode2) {
-                        var srcImglogo      = srcImglogoM2;
-                        var srcImglogo_M    = srcImglogoM2_T;
+                        srcPictureID	= srcImglogoM2;
+                        srcPictureID_T	= srcImglogoM2_T;
                     } else if (State == Mode3) {
-                        var srcImglogo      = srcImglogoM3;
-                        var srcImglogo_M    = srcImglogoM3_T;
+                        srcPictureID	= srcImglogoM3;
+                        srcPictureID_T	= srcImglogoM3_T;
                     } else if (State == Mode4) {
-                        var srcImglogo      = srcImglogoM4;
-                        var srcImglogo_M    = srcImglogoM4_T;
+                        srcPictureID	= srcImglogoM4;
+                        srcPictureID_T	= srcImglogoM4_T;
                     } else if (State == Mode5) {
-                        var srcImglogo      = srcImglogoM5;
-                        var srcImglogo_M    = srcImglogoM5_T;
+                        srcPictureID	= srcImglogoM5;
+                        srcPictureID_T	= srcImglogoM5_T;
                     } else if (State == Mode6) {
-                        var srcImglogo      = srcImglogoM6;
-                        var srcImglogo_M    = srcImglogoM6_T;
+                        srcPictureID	= srcImglogoM6;
+                        srcPictureID_T	= srcImglogoM6_T;
                     } else if (State == Mode7) {
-                        var srcImglogo      = srcImglogoM7;
-                        var srcImglogo_M    = srcImglogoM7_T;
+                      	srcPictureID	= srcImglogoM7;
+                        srcPictureID_T	= srcImglogoM7_T;
                     } else if (State == Mode8) {
-                        var srcImglogo      = srcImglogoM8;
-                        var srcImglogo_M    = srcImglogoM8_T;
+                        srcPictureID	= srcImglogoM8;
+                        srcPictureID_T	= srcImglogoM8_T;
                     } else if (State == Mode9) {
-                        var srcImglogo      = srcImglogoM9;
-                        var srcImglogo_M    = srcImglogoM9_T;
+                        srcPictureID	= srcImglogoM9;
+                        srcPictureID_T	= srcImglogoM9_T;
                     } else {
-                        var srcImglogo      = srcImglogoER;
-                        var srcImglogo_M    = srcImglogoER_T;
+                        srcPictureID	= srcImglogoER;
+                        srcPictureID_T	= srcImglogoER_T;
                     }
             
-            $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcImglogo +'.'+ srcImglogoER_M_T+'" '+srcImgSize_M+'>');
+            //$('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgURL_M +srcImglogo +'.'+ srcImglogo_T+'" '+srcImgSize_M+'>');
+          	$('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty.append('<img src="'+srcImgURL + srcImglogo +srcPictureID +'.'+ srcPictureID_T+'" '+srcImgSize+'>');
+          	$('.cmd[data-cmd_uid=#uid#] .state#id#').empty().append(_options.display_value+' '+'#unite#');
+            $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate);
             
 			// Update IMG     
 		$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
