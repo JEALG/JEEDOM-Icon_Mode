@@ -1,0 +1,123 @@
+<div style="min-width:90px;min-height : 20px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" title="#collectDate#">
+    <!-- Info Widget
+        Mise à jour : JAG 20190609: Compatibilité V3.2/V4
+    -->
+    <div class="title #hide_name#">
+        <div class="cmdName" style="#hideCmdName#">#name_display#</div>
+    </div>
+        <div class="content-sm ">
+            <span class="iconCmd#uid#"></span>
+    </div>
+    <div style="font-weight: bold;font-size : 10px;">
+        <span class="timeCmd#id#" ></span>
+    </div>
+    <script>
+        jeedom.cmd.update['#id#'] = function(_options){
+            // Valeur Mode 1
+                var Mode1               = ('#Mode1#'!='#'+'Mode1#') ? "#Mode1#" : "CONFORT";
+                var srcImglogoM1        = ('#logoM1#'!='#'+'logoM1#') ? "#logoM1#" : "chauff_confort";
+                var srcImglogoM1_T      = ('#logoM1_type#'!='#'+'logoM1_type#') ? "#logoM1_type#" : "png";
+            // Valeur Mode 2
+                var Mode2               = ('#Mode2#'!='#'+'Mode2#') ? "#Mode2#" : "ECO";
+                var srcImglogoM2        = ('#logoM2#'!='#'+'logoM2#') ? "#logoM2#" : "chauff_eco";
+                var srcImglogoM2_T      = ('#logoM2_type#'!='#'+'logoM2_type#') ? "#logoM2_type#" : "png";
+            // Valeur Mode 3
+                var Mode3               = ('#Mode3#'!='#'+'Mode3#') ? "#Mode1#" : "ABSENT";
+                var srcImglogoM3        = ('#logoM3#'!='#'+'logoM3#') ? "#logoM3#" : "chauff_HG";
+                var srcImglogoM3_T      = ('#logoM3_type#'!='#'+'logoM3_type#') ? "#logoM3_type#" : "png";
+            // Valeur Mode 4
+                var Mode4               = ('#Mode4#'!='#'+'Mode4#') ? "#Mode4#" : "FENÊTRES OUVERTES";
+                var srcImglogoM4        = ('#logoM4#'!='#'+'logoM4#') ? "#logoM4#" : "chauff_desactive";
+                var srcImglogoM4_T      = ('#logoM4_type-M#'!='#'+'logoM4_type-M#') ? "#logoM4_type-M#" : "png";
+            // Valeur Mode 5
+                var Mode5               = ('#Mode5#'!='#'+'Mode5#') ? "#Mode5#" : "CONFORT+";
+                var srcImglogoM5        = ('#logoM5#'!='#'+'logoM5#') ? "#logoM5#" : "chauff_jour";
+                var srcImglogoM5_T      = ('#logoM5_type#'!='#'+'logoM5_type#') ? "#logoM5_type#" : "png";
+            // Valeur  Mode 6
+                var Mode6               = ('#Mode6#'!='#'+'Mode6#') ? "#Mode6#" : "PURGE";
+                var srcImglogoM6        = ('#logoM6#'!='#'+'logoM6#') ? "#logoM6#" : "chauff_susprendu";
+                var srcImglogoM6_T      = ('#logoM6_type#'!='#'+'logoM6_type#') ? "#logoM6_type#" : "png";
+            // Valeur Mode 7
+                var Mode7               = ('#Mode7#'!='#'+'Mode7#') ? "#Mode7#" : "HORS-GEL";
+                var srcImglogoM7        = ('#logoM7-M#'!='#'+'logoM7-M#') ? "#logoM7-M#" : "chauff_HG";
+                var srcImglogoM7_T      = ('#logoM7_type#'!='#'+'logoM7_type#') ? "#logoM7_type#" : "png";
+            // Valeur Mode 8
+                var Mode8               = ('#Mode8#'!='#'+'Mode8#') ? "#Mode8#" : "SUSPENDU";
+                var srcImglogoM8        = ('#logoM8#'!='#'+'logoM8#') ? "#logoM8#" : "chauff_susprendu";
+                var srcImglogoM8_T      = ('#logoM8_type#'!='#'+'logoM8_type#') ? "#logoM8_type#" : "png";
+            // Valeur  Mode 9
+                var Mode9               = ('#Mode9#'!='#'+'Mode9#') ? "#Mode9#" : "STOP";
+                var srcImglogoM9        = ('#logoM9#'!='#'+'logoM9#') ? "#logoM9#" : "chauff_susprendu";
+                var srcImglogoM9_T      = ('#logoM9_type#'!='#'+'logoM9_type#') ? "#logoM9_type#" : "png";
+        // Paramètrage du logo pour Erreur
+                var srcImglogoER        = ('#logoER#'!='#'+'logoER#') ? "#logoER#": "oups";
+                var srcImglogoER_T      = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#": "png";
+        // Paramètre "sizeh" & "sizew"
+                var srcImgHeight_M      = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):80;
+                var srcImgWidth_M       = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):80;
+                var srcImgSize_M        = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
+		// Paramétrage des images
+                var srcImgURL_M         = '	plugins/widget/core/template/dashboard/cmd.info.string.Icon_Mode/';
+                var srcImglogo;
+                var srcImglogo_M;
+		// Affichage durée changement dernier etat
+                var srcImglogoTime_M    = '#logoTime-M#';
+                
+            
+            $('.cmd[data-cmd_id=#id#] .label-info').empty(); 
+        // Update
+			var State = _options.display_value;	
+                    if (State == Mode1) {
+                        var srcImglogo      = srcImglogoM1;
+                        var srcImglogo_M    = srcImglogoM1_T;
+                    } else if (State == Mode2) {
+                        var srcImglogo      = srcImglogoM2;
+                        var srcImglogo_M    = srcImglogoM2_T;
+                    } else if (State == Mode3) {
+                        var srcImglogo      = srcImglogoM3;
+                        var srcImglogo_M    = srcImglogoM3_T;
+                    } else if (State == Mode4) {
+                        var srcImglogo      = srcImglogoM4;
+                        var srcImglogo_M    = srcImglogoM4_T;
+                    } else if (State == Mode5) {
+                        var srcImglogo      = srcImglogoM5;
+                        var srcImglogo_M    = srcImglogoM5_T;
+                    } else if (State == Mode6) {
+                        var srcImglogo      = srcImglogoM6;
+                        var srcImglogo_M    = srcImglogoM6_T;
+                    } else if (State == Mode7) {
+                        var srcImglogo      = srcImglogoM7;
+                        var srcImglogo_M    = srcImglogoM7_T;
+                    } else if (State == Mode8) {
+                        var srcImglogo      = srcImglogoM8;
+                        var srcImglogo_M    = srcImglogoM8_T;
+                    } else if (State == Mode9) {
+                        var srcImglogo      = srcImglogoM9;
+                        var srcImglogo_M    = srcImglogoM9_T;
+                    } else {
+                        var srcImglogo      = srcImglogoER;
+                        var srcImglogo_M    = srcImglogoER_T;
+                    }
+            
+            $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcImglogo +'.'+ srcImglogoER_M_T+'" '+srcImgSize_M+'>');
+            
+			// Update IMG     
+		$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+          // Derniere durée changement dernier etat
+			//Merci @Salvialf pour le code
+			if (srcImglogoTime_M == "duree") {
+				jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_id=#id#] .timeCmd#id#'));
+			} else if (srcImglogoTime == "date") {
+				var srcdate_M     = new Date(_options.valueDate);
+				var srcformat_M   = $.datepicker.formatDate('D dd/mm', srcdate_M);
+				var srctime_M     = "à "+srcdate_M.getHours()+":"+(srcdate_M.getMinutes()<10?'0':'')+srcdate_M.getMinutes();
+				$('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat_M+'<br>'+srctime_M);
+			} else if (srcImglogoTime == "heure") {
+				var srcdate_M     = new Date(_options.valueDate);
+				var srctime_M     = "à "+srcdate_M.getHours()+":"+(srcdate_M.getMinutes()<10?'0':'')+srcdate_M.getMinutes()+":"+(srcdate_M.getSeconds()<10?'0':'')+srcdate_M.getSeconds()+"";
+				$('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srctime_M);
+			};
+	} 
+	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+    </script>
+</div>
