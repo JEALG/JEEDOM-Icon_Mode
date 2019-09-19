@@ -78,7 +78,7 @@
                 var srcImglogoER        = ('#logoER#'!='#'+'logoER#') ? "#logoER#": "er_oups6_or";
                 var srcImglogoER_T      = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#": "png";
                 var srcFolderErreur     = ('#dossierER#'!='#'+'dossierER#') ? "#dossierER#" : "error";
-                var srcImgURLError      = "data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/"+srcFolderErreur+'/';
+                var srcImgURL_ER        = "data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/"+srcFolderErreur+'/';
              
             // Variable pour Update
                 var srcPictureID;
@@ -121,7 +121,7 @@
             } else {
                 srcPictureID	= srcImglogoER;
                 srcPictureID_T	= srcImglogoER_T;
-                srcImgURL       = srcImgURLError;
+                srcImgURL       = srcImgURL_ER;
             }
           
         $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').empty().append('<img src="'+srcImgURL +srcPictureID +'.'+ srcPictureID_T+'" '+srcImgSize+'>');
