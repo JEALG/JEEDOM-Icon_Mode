@@ -15,9 +15,9 @@
             <span title="Min" class="tooltips">#minHistoryValue##unite#</span>|<span title="Moy" class="tooltips">#averageHistoryValue##unite#</span>|<span title="Max" class="tooltips">#maxHistoryValue##unite#</span> <i class="#tendance#"></i>
         </div>
     <!-- Durée -->
-        <div style="font-weight: bold;font-size : 10px;">
-            <span class="timeCmd#id#" ></span>
-        </div>
+    <div class="value">
+        <span style="min-width:100px" class="timeCmd#id# timeCmd label label-default value"></span>
+    </div>
 
     <script>
         jeedom.cmd.update['#id#'] = function(_options){
@@ -138,7 +138,7 @@
                     var srcdate     = new Date(_options.valueDate);
                     var srcformat   = $.datepicker.formatDate('D dd/mm', srcdate);
                     var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes();
-                    $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat+'<br>'+srctime);
+                    $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat+' '+srctime);
                 } else if (srcImglogoTime == "heure") {
                     var srcdate     = new Date(_options.valueDate);
                     var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes()+":"+(srcdate.getSeconds()<10?'0':'')+srcdate.getSeconds()+"";
