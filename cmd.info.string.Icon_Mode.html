@@ -1,7 +1,7 @@
 <div style="padding:0;min-width:90px;min-height:100px;" class="cmd #history# tooltips cmd-widget #displayHistory#" data-type="info" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
-        Basé sur les widget de 	: 
-        Mise à jour             : JAG 20190918 : Migration uniquement pour core V4
+        Basé sur les widget de 	:
+        Mise à jour             : JAG 20200421 : Update présentation pour la V4, suppression historique
 		Info					: Merci à @Salvialf pour la duréee, @Nicoraptor pour le code pour récupérer valeur Mode, @Antoinekl1 pour l'info et le code suite à la modif du plugin "Mode"
 	-->
     <div class="title #hide_name#">
@@ -11,9 +11,7 @@
         <span class="iconCmd#id#"></span>
     </div>
     <!-- Historique -->
-    <div class="cmdStats #hide_history#" style="#displayHistory# font-size : 10px;">
-        <span title="Min" class="tooltips">#minHistoryValue##unite#</span>|<span title="Moy" class="tooltips">#averageHistoryValue##unite#</span>|<span title="Max" class="tooltips">#maxHistoryValue##unite#</span> <i class="#tendance#"></i>
-    </div>
+
     <!-- Durée -->
     <div class="value">
         <span style="min-width:100px" class="timeCmd#id# timeCmd label label-default value"></span>
@@ -132,7 +130,7 @@
             var srcImglogoTime = '#logoTime#';
             // Derniere durée changement dernier etat
             //Merci @Salvialf pour le code
-            if (srcImglogoTime == "duree") {
+            if (srcImglogoTime == "duree"|| srcImglogoTime == "durée") {
                 jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_id=#id#] .timeCmd#id#'));
             } else if (srcImglogoTime == "date") {
                 var srcdate = new Date(_options.valueDate);
@@ -151,5 +149,6 @@
             collectDate: '#collectDate#',
             alertLevel: '#alertLevel#'
         });
+
     </script>
 </div>
